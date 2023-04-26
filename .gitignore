@@ -1,0 +1,14 @@
+node_modules
+
+/node_module
+
+/packages
+
+.DS_store
+
+.env
+
+*.env
+
+.sass-cache
+
