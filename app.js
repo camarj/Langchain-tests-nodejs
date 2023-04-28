@@ -9,7 +9,7 @@ const { chatTest2 } = require('./controllers/ChatTests/02-practica2');
 const { chatTest3 } = require('./controllers/ChatTests/03-practica3');
 const { chatTest4 } = require('./controllers/ChatTests/04-practica4');
 const { chatTest5 } = require('./controllers/ChatTests/05-practica5');
-const { chatController } = require('./controllers/UseCases/ChatWhitMemory');
+
 const Server = require('./models/server');
 
 const server = new Server();
