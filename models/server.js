@@ -1,44 +1,25 @@
 const express = require('express');
+const cors = require('cors');
 
 class server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
 
+    this.middlewares();
+
     this.routes();
   }
 
+  middlewares() {
+    //cors
+    this.app.use(cors());
+    //lectura y parseo del body
+    this.app.use(express.json());
+  }
+
   routes() {
-    this.app.get('/api', (req, res) => {
-      res.json({
-        ok: true,
-        msg: 'get API',
-      });
-    });
-    this.app.post('/api', (req, res) => {
-      res.status(201).json({
-        ok: true,
-        msg: 'post API',
-      });
-    });
-    this.app.put('/api', (req, res) => {
-      res.json({
-        ok: true,
-        msg: 'put API',
-      });
-    });
-    this.app.delete('/api', (req, res) => {
-      res.json({
-        ok: true,
-        msg: 'delete API',
-      });
-    });
-    this.app.patch('/api', (req, res) => {
-      res.json({
-        ok: true,
-        msg: 'patch API',
-      });
-    });
+    this.app.use('/api/chat', require('../routes/chat'));
   }
 
   listen() {
