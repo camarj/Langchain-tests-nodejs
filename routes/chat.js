@@ -1,9 +1,11 @@
 const { Router } = require('express');
 
-const { chatController } = require('../controllers/UseCases/ChatWithMemory');
+const { chatControllerMemory } = require('../controllers/UseCases/ChatWithMemory');
+const { run } = require('../controllers/UseCases/ChatWithEmbedding');
 
 const router = Router();
 
-router.post('/', chatController);
+router.post('/', chatControllerMemory);
+router.post('/embedding', run);
 
 module.exports = router;

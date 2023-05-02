@@ -28,7 +28,7 @@ const chain = new ConversationChain({
   llm: chat,
 });
 
-const chatController = async (req, res) => {
+const chatControllerMemory = async (req, res) => {
   const body = req.body;
   const respuesta = await chain.call({
     input: body.input,
@@ -39,4 +39,4 @@ const chatController = async (req, res) => {
   });
 };
 
-module.exports = { chatController };
+module.exports = { chatControllerMemory };

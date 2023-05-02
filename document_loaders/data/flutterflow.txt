@@ -1,0 +1,46 @@
+Guía básica de solución de problemas
+Esta es una guía general de solución de problemas para cualquier problema que ocurra con los proyectos de FlutterFlow.
+Detección de problemas
+Si su proyecto no se ejecuta en modo de ejecución / prueba, descargar APK / Code o Github push, puede deberse a algún problema con cualquier widget o configuración en su proyecto. Hemos mejorado nuestra detección de problemas para que sepa qué está causando el problema.
+Cuando identificamos el problema, lo registramos en la consola de depuración de un navegador o lo mostramos en una ventana emergente. Si no ve ninguna ventana emergente y desea averiguar qué está mal, puede abrir los registros.
+Para abrir los registros de depuración, ejecuta la aplicación en modo Ejecutar/Prueba y selecciona:
+Para Google Chrome
+Windows: F12 o Ctrl+Mayús+J
+Mac: F12 o ⌘+Opción+J
+Para Safari
+Vaya a Preferencias/Configuración > Avanzado y habilite el "Mostrar menú de desarrollo". A continuación, utilice ⌘+Opción+C para abrir la consola.
+Esto abrirá el registro de la consola y cualquier error se resaltará en color rojo.
+Error en el registro de la consola del navegador
+Si ve una ventana emergente, abra la sección de color rojo (haga clic  en Leer más) y, en la parte inferior, verá el widget exacto o el error que causa el error de compilación o descarga.
+Veamos un par de ejemplos de lo que puede encontrar al crear su aplicación:
+Ejemplo 1
+Supongamos que tiene un widget de texto y ha agregado una acción que está incompleta. Cuando intenta descargar el proyecto en tal situación, es posible que vea lo siguiente:
+Detección del problema -1
+Para localizar el widget que causa el error en el árbol de widgets, comience a leer la lista de widgets (de arriba a abajo en una ventana emergente) y localice el widget utilizando su número secundario. Por ejemplo, cuando un widget se muestra como Hijo 1, será el primer hijo de su widget anterior (consulte el widget en una ventana emergente). Y cuando se muestre como  Niño 2,3, y así sucesivamente, será el widget hermano del Niño 1.
+Si tiene la práctica de nombrar el widget, será sencillo rastrearlo (ya que mostraremos el nombre exacto del widget). Así es como se ve:
+Detecting issue -2
+Para averiguar qué causó que el widget fallara, puede verificar los errores en el .
+Ejemplo 2
+Supongamos que ha agregado un widget personalizado que funciona bien. Pero al modificarlo, cometiste un error tipográfico en el código, y ahora muestra esto:
+Error while building the app
+The second Error: line clearly mentions that there is some issue with a method name in a custom code.
+Frontend (UI builder) issues
+The following steps will help you fix the issues with the UI builder inside FlutterFlow.
+In case of overflowing text, it's recommended that you wrap the Text Widget inside an Expanded widget. To do this, click on the Expand option in the alignment properties of the Text Widget.
+If you notice scaling issues with widgets, please ensure that you set percentage values for the dimensions of the widgets.
+Al cambiar el nombre de un widget personalizado o una acción personalizada, asegúrese de cambiar también el nombre del widget desde el código.
+Asegúrese de no cargar activos multimedia duplicados en los recursos multimedia del proyecto.
+Asegúrese de haber introducido las claves API correctas cuando utilice integraciones de terceros.
+Borre la memoria caché y el historial de su navegador si FlutterFlow parece estar retrasado.
+Cambie el navegador o utilice el modo de navegación de incógnito/privado si no puede iniciar desde la pantalla de inicio de sesión cuando utiliza el modo Probar/Ejecutar.
+Problemas de backend
+Los siguientes pasos lo ayudarán a solucionar problemas como el error de pantalla gris, la pantalla de carga infinita, el error de creación de registros de Firestore, etc. 
+
+Se recomienda realizar estos pasos comunes para cualquier problema que se enfrente con el backend.
+Asegúrese de haber agregado los siguientes permisos de nube para firebase@flutterflow.io: Editor, Administrador de Cloud Functions y Usuario de cuenta de servicio.  sobre cómo hacerlo.
+Actualiza las reglas de Firebase.  sobre cómo hacerlo. 
+Asegúrese de que todos los tipos y nombres de campos de datos coincidan en Firestore y FlutterFlow.  sobre cómo hacerlo. 
+Si ya has completado la configuración de Firebase, elimina los permisos existentes y completa una nueva configuración desde cero.  sobre cómo hacerlo.
+Asegúrate de haber agregado  a Dominios autorizados en la pestaña de autenticación de Firebase.
+Asegúrese de estar en la última versión de FlutterFlow seleccionando (ctrl / cmd + R). Después de hacer esto, borre la memoria caché de su navegador y cierre sesión / en FlutterFlow.
+Para usar funciones en la nube como notificaciones push, pagos, etc. Asegúrate de que tu proyecto de Firebase esté en un plan Blaze
