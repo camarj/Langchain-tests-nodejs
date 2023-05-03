@@ -51,7 +51,7 @@ const llm = new OpenAI({
   modelName: 'gpt-3.5-turbo',
 });
 
-const run = async (req, res) => {
+const chatControllerEmbeddings = async (req, res) => {
     // const docs = await loadDocuments();
 
     // const store = await embedDocuments(docs);
@@ -82,4 +82,4 @@ const run = async (req, res) => {
 
 };
 
-module.exports = { run };
+module.exports = { chatControllerEmbeddings };
